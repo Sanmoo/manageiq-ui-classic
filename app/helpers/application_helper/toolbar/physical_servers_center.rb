@@ -228,4 +228,30 @@ class ApplicationHelper::Toolbar::PhysicalServersCenter < ApplicationHelper::Too
       )
     ]
   )
+  button_group(
+    'physical_server_remote_access',
+    [
+      select(
+        :physical_server_remote_access_choice,
+        'fa pficon-screen fa-lg',
+        N_('Physical Server Remote Access'),
+        N_('Access'),
+        :enabled => false,
+        :onwhen  => "1",
+        :items   => [
+          button(
+            :physical_server_remote_console,
+            'pficon pficon-screen fa-lg',
+            N_('Open a remote console for this Physical Server'),
+            N_('Physical Server Console'),
+            :url     => "console",
+            :method  => :get,
+            :enabled => false,
+            :onwhen  => "1",
+            :options => {:feature => :physical_server_remote_access}
+          )
+        ],
+      ),
+    ]
+  )
 end
